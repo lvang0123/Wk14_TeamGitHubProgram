@@ -1,13 +1,10 @@
-
 #Wk14_TeamGitHubProgram - Average Test Score
 #This program will prompt the user for the total number of tests they have taken, their test scores for each tests, and then calculate the average of the test scores. The average of the test scores will then be outputted along with the appropriate letter grade.
 #Ben, Dan, Kyle, Lisa, and Lia all worked on this program together during class.
-#April 24, 2018
+#April 28, 2018
 
 #variables
-numberOfTests = 0.0
 totalTests = 0.0
-testScore = 0.0
 testAverage = 0.0
 
 #introduction, welcoming the user
@@ -28,7 +25,7 @@ while True:
       break
   except ValueError:
     print()
-    print("*** ERROR: Not a number format ***")
+    print("*** ERROR: Not an integer ***")
     print()
 
 #creates an empty line
@@ -40,7 +37,7 @@ for x in range(0, numberOfTests):
     
     while True:
       try:
-        testScore = int(input("Enter your test score:"))
+        testScore = float(input("Enter your test score:"))
         if (testScore < 0):
           print()
           print("*** ERROR: Test score cannot be lower than 0 ***")
@@ -84,4 +81,4 @@ else:
 print()
 
 #informing the user that the program has ended
-print "Thank you for using the Average Test Score program!"
+print ("Thank you for using the Average Test Score program!")
