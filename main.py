@@ -3,17 +3,16 @@
 #Ben, Dan, Kyle, Lisa, and Lia all worked on this program together during class.
 #April 28, 2018
 
-#variables
+#Declaring variables
 totalTests = 0.0
 testAverage = 0.0
 
-#introduction, welcoming the user
+#Welcoming the user
 print("Welcome to the Average Test Score program!")
 
-#creates an empty line
 print()
 
-#user's input of the total number of tests 
+#Inputting the user's number of tests they've taken
 while True:
   try:
     numberOfTests = int(input('How many tests have you taken?'))
@@ -28,10 +27,9 @@ while True:
     print("*** ERROR: Not an integer ***")
     print()
 
-#creates an empty line
 print()
 
-#for loop, inputting the user's test scores and adding them together
+#Using a for loop to input the user's test scores and then add them together
 for x in range(0, numberOfTests):
     print(("Test Number %d") % (x + 1))
     
@@ -56,13 +54,12 @@ for x in range(0, numberOfTests):
     print()
     totalTests = totalTests + testScore
 
-#calculating average
+#Calculating average
 testAverage = (totalTests / numberOfTests)
 
-#outputs & formats the average to have 2 decimal places
+#Outputs & formats the average to have 2 decimal places
 print(("Average Test Score:"), (format(testAverage, '.2f')), ("%"))
 
-#creates an empty line
 print()
 
 #if...elif...else statements to find and output the correct letter grade for the average test score 
@@ -76,9 +73,8 @@ elif (testAverage >= 60 and testAverage <=69):
   print("You've received a D for your letter grade!")
 else: 
   print("You've received a F for your letter grade!")
-
-#creates an empty line  
+  
 print()
 
-#informing the user that the program has ended
-print ("Thank you for using the Average Test Score program!")
+#Informing the user that the program has ended
+print("Thank you for using the Average Test Score program!")
