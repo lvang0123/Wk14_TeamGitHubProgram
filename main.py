@@ -50,7 +50,7 @@ elif (testAverage >= 70 and testAverage <=79):
 elif (testAverage >= 60 and testAverage <=69):
   print "You've received a D for your letter grade!"
 else: 
-  print "You've receivede a F for your letter grade!"
+  print "You've received a F for your letter grade!"
 
 #creates an empty line  
 print
