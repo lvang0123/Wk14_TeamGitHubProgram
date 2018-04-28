@@ -4,7 +4,7 @@
 #April 28, 2018
 
 #Declaring variables
-totalTests = 0.0
+totalTests = 0
 testAverage = 0.0
 
 #Welcoming the user
@@ -12,68 +12,109 @@ print("Welcome to the Average Test Score program!")
 
 print()
 
-#Inputting the user's number of tests they've taken
+#Prompting the user to begin the program or end it 
 while True:
   try:
-    numberOfTests = int(input('How many tests have you taken?'))
-    if (numberOfTests <= 0):
-      print()
-      print("*** ERROR: Must enter at least 1 ***")
-      print()
-    else:
+    repeat = input("Enter Y to begin the program or N to end it:")
+    if (repeat.lower().upper() == "Y") or (repeat.lower().upper() == "N"):
       break
-  except ValueError:
+    else:
+      print()
+      print("*** ERROR: Must enter a Y or N ***")
+      print()
+  except TypeError:
     print()
-    print("*** ERROR: Not an integer ***")
+    print("*** ERROR: Not a string ***")
     print()
-
-print()
-
-#Using a for loop to input the user's test scores and then add them together
-for x in range(0, numberOfTests):
-    print(("Test Number %d") % (x + 1))
-    
-    while True:
-      try:
-        testScore = float(input("Enter your test score:"))
-        if (testScore < 0):
-          print()
-          print("*** ERROR: Test score cannot be lower than 0 ***")
-          print()
-        elif (testScore > 100):
-          print()
-          print("*** ERROR: Test score cannot be higher than 100 ***")
-          print()
-        else:
-          break
-      except ValueError:
-        print()
-        print("*** ERROR: Not a number format ***")
-        print()
-    
-    print()
-    totalTests = totalTests + testScore
-
-#Calculating average
-testAverage = (totalTests / numberOfTests)
-
-#Outputs & formats the average to have 2 decimal places
-print(("Average Test Score:"), (format(testAverage, '.2f')), ("%"))
-
-print()
-
-#if...elif...else statements to find and output the correct letter grade for the average test score 
-if (testAverage >= 90):
-  print("You've received an A for your letter grade!")
-elif (testAverage >= 80 and testAverage <=89):
-  print("You've received a B for your letter grade!")
-elif (testAverage >= 70 and testAverage <=79):
-  print("You've received a C for your letter grade!")
-elif (testAverage >= 60 and testAverage <=69):
-  print("You've received a D for your letter grade!")
-else: 
-  print("You've received a F for your letter grade!")
+      
+#If the user inputs "N", the program ends
+while repeat.lower().upper() != "N":
+  print()
   
+  #Prompting the user to input the total number of tests they've taken
+  while True:
+    try:
+      numberOfTests = int(input("How many tests have you taken?"))
+      if (numberOfTests <= 0):
+        print()
+        print("*** ERROR: Must enter at least 1 ***")
+        print()
+      else:
+        break
+    except ValueError:
+      print()
+      print("*** ERROR: Not an integer ***")
+      print()
+  
+  print()
+  
+  #Using a for loop to input the user's test scores and then add them together
+  for x in range(0, numberOfTests):
+      print(("Test Number %d") % (x + 1))
+      while True:
+        try:
+          testScore = float(input("Enter your test score:"))
+          if (testScore < 0):
+            print()
+            print("*** ERROR: Test score cannot be lower than 0 ***")
+            print()
+          elif (testScore > 100):
+            print()
+            print("*** ERROR: Test score cannot be higher than 100 ***")
+            print()
+          else:
+            break
+        except ValueError:
+          print()
+          print("*** ERROR: Not a number format ***")
+          print()
+          
+      print()
+      totalTests = totalTests + testScore
+  
+  #Calculating average
+  testAverage = (totalTests / numberOfTests)
+  
+  #Outputs & formats the average test score to only have 2 decimal places
+  print(("Average Test Score:"), (format(testAverage, '.2f')), ("%"))
+  
+  print()
+  
+  #if...elif...else statements to find and output the correct letter grade for the average test score 
+  if (testAverage >= 90):
+    print("You've received an A for your letter grade!")
+  elif (testAverage >= 80 and testAverage <=89):
+    print("You've received a B for your letter grade!")
+  elif (testAverage >= 70 and testAverage <=79):
+    print("You've received a C for your letter grade!")
+  elif (testAverage >= 60 and testAverage <=69):
+    print("You've received a D for your letter grade!")
+  else: 
+    print("You've received a F for your letter grade!")
+    
+  print()
+    
+  #Prompting the user to restart the program or end it  
+  while True:
+    try:
+      repeat = input("Enter Y to begin the program or N to end it:")
+      if (repeat.lower().upper() == "Y"):
+        totalTests = 0      #Resetting the total number of tests taken
+        break
+      elif (repeat.lower().upper() == "N"):
+        break
+      else:
+        print()
+        print("*** ERROR: Must enter a Y or N ***")
+        print()
+    except ValueError:
+      print()
+      print("*** ERROR: Not a string ***")
+      print()
+      
+  print()
+  print("----------------------------------------------------")
+
 print()
 
 #Informing the user that the program has ended
