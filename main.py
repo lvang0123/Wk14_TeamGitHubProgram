@@ -6,51 +6,57 @@
 #Declaring variables
 totalTests = 0
 testAverage = 0.0
+repeat = "Y"
+confirm = "no"
+noConfirm = "no"
+yesConfirm = "yes"
 
 #Welcoming the user
 print("Welcome to the Average Test Score program!")
 
 print()
-
-#Prompting the user to begin the program or end it 
-while True:
-  try:
-    repeat = input("Enter Y to begin the program or N to end it:")
-    if (repeat.lower().upper() == "Y") or (repeat.lower().upper() == "N"):
-      break
-    else:
-      print()
-      print("*** ERROR: Must enter a Y or N ***")
-      print()
-  except TypeError:
-    print()
-    print("*** ERROR: Not a string ***")
-    print()
       
 #If the user inputs "N", the program ends
 while repeat.lower().upper() != "N":
-  print()
   
-  #Prompting the user to input the total number of tests they've taken
-  while True:
-    try:
-      numberOfTests = int(input("How many tests have you taken?"))
-      if (numberOfTests <= 0):
+  #Using a while loop to input the user's total number of tests they've taken and also for them to confirm that it is correct
+  while confirm.lower() == noConfirm:
+    #Prompting the user to input the total number of tests they've taken
+    while True:
+      try:
+        numberOfTests = int(input("How many tests have you taken?"))
+        if numberOfTests <= 0:
+          print()
+          print("*** ERROR: Must enter at least 1 ***")
+          print()
+        else:
+          break
+      except ValueError:
         print()
-        print("*** ERROR: Must enter at least 1 ***")
+        print("*** ERROR: Not an integer ***")
         print()
-      else:
+        
+    print()
+    
+    #Prompting the user to confirm if the total tests they've taken is correct
+    while True:
+      print("Are you sure?")
+      confirm = input("Yes or No? ")
+      if confirm.lower() == yesConfirm:
         break
-    except ValueError:
-      print()
-      print("*** ERROR: Not an integer ***")
-      print()
-  
-  print()
+      elif confirm.lower() == noConfirm:
+        break
+      else:
+        print()
+        print("*** ERROR: Please enter 'Yes' or 'No' ***")
+        print()
+        
+    print()
   
   #Using a for loop to input the user's test scores and then add them together
   for x in range(0, numberOfTests):
       print(("Test Number %d") % (x + 1))
+
       while True:
         try:
           testScore = float(input("Enter your test score:"))
@@ -96,26 +102,22 @@ while repeat.lower().upper() != "N":
     
   #Prompting the user to restart the program or end it  
   while True:
-    try:
-      repeat = input("Enter Y to begin the program or N to end it:")
-      if (repeat.lower().upper() == "Y"):
-        totalTests = 0      #Resetting the total number of tests taken
-        break
-      elif (repeat.lower().upper() == "N"):
-        break
-      else:
-        print()
-        print("*** ERROR: Must enter a Y or N ***")
-        print()
-    except ValueError:
+    print("Would you like to run the program again?")
+    repeat = input("Enter Y to restart the program or N to end it: ")
+    if (repeat.lower().upper() == "Y"):
+      totalTests = 0      #Resetting the total number of tests taken to 0
+      confirm = "no"      #Resetting this variable from 'yes' to 'no'
+      break
+    elif (repeat.lower().upper() == "N"):
+      break
+    else:
       print()
-      print("*** ERROR: Not a string ***")
+      print("*** ERROR: Must enter a Y or N ***")
       print()
       
   print()
-  print("----------------------------------------------------")
-
-print()
+  print("--------------------------------------------")
+  print()
 
 #Informing the user that the program has ended
 print("Thank you for using the Average Test Score program!")
